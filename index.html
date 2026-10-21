@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tracker de compromisos y riesgos</title>
+  <link rel="stylesheet" href="src/styles.css">
+</head>
+<body>
+  <header class="top">
+    <div>
+      <h1>Tracker de compromisos y riesgos</h1>
+      <p class="sub">Proyecto Atlas · datos ficticios de demostración</p>
+    </div>
+    <div class="acciones">
+      <button id="btn-nuevo" class="primario">+ Nuevo ítem</button>
+      <button id="btn-csv">Exportar CSV</button>
+      <button id="btn-reset" class="fantasma">Restaurar datos de ejemplo</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="kpis" id="kpis" aria-label="Indicadores"></section>
+
+    <section class="grid">
+      <div class="panel">
+        <div class="filtros">
+          <input id="f-texto" type="search" placeholder="Buscar…" aria-label="Buscar">
+          <select id="f-tipo" aria-label="Tipo">
+            <option value="">Todos los tipos</option>
+            <option value="compromiso">Compromisos</option>
+            <option value="riesgo">Riesgos</option>
+          </select>
+          <select id="f-responsable" aria-label="Responsable"></select>
+          <select id="f-semaforo" aria-label="Plazo">
+            <option value="">Todos los plazos</option>
+            <option value="vencido">Vencidos</option>
+            <option value="por_vencer">Por vencer</option>
+            <option value="al_dia">Al día</option>
+            <option value="cerrado">Cerrados</option>
+          </select>
+        </div>
+        <div class="tabla-wrap">
+          <table>
+            <thead>
+              <tr><th>ID</th><th>Ítem</th><th>Responsable</th><th>Fecha</th><th>Plazo</th><th>Severidad</th><th></th></tr>
+            </thead>
+            <tbody id="tabla"></tbody>
+          </table>
+          <p id="vacio" class="vacio" hidden>No hay ítems con esos filtros.</p>
+        </div>
+      </div>
+
+      <aside class="lateral">
+        <div class="panel">
+          <h2>Matriz de riesgos abiertos</h2>
+          <div class="matriz-wrap">
+            <span class="eje-y">Probabilidad →</span>
+            <div id="matriz" class="matriz"></div>
+          </div>
+          <p class="eje-x">Impacto →</p>
+        </div>
+        <div class="panel">
+          <h2>Carga por responsable</h2>
+          <div id="carga"></div>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <dialog id="dlg">
+    <form id="form" method="dialog">
+      <h2 id="dlg-titulo">Nuevo ítem</h2>
+      <label>Tipo
+        <select name="tipo">
+          <option value="compromiso">Compromiso</option>
+          <option value="riesgo">Riesgo</option>
+        </select>
+      </label>
+      <label>Título <input name="titulo" required></label>
+      <div class="fila">
+        <label>Responsable <input name="responsable" list="responsables" required></label>
+        <label>Fecha <input name="fecha" type="date"></label>
+      </div>
+      <div class="fila">
+        <label>Estado
+          <select name="estado">
+            <option value="abierto">Abierto</option>
+            <option value="en_curso">En curso</option>
+            <option value="cerrado">Cerrado</option>
+          </select>
+        </label>
+        <label>Origen <input name="origen" placeholder="Reunión, comité…"></label>
+      </div>
+      <fieldset id="campos-riesgo">
+        <div class="fila">
+          <label>Probabilidad (1-5) <input name="probabilidad" type="number" min="1" max="5"></label>
+          <label>Impacto (1-5) <input name="impacto" type="number" min="1" max="5"></label>
+        </div>
+        <label>Mitigación <textarea name="mitigacion" rows="2"></textarea></label>
+      </fieldset>
+      <ul id="errores" class="errores"></ul>
+      <div class="pie">
+        <button type="button" id="btn-cancelar">Cancelar</button>
+        <button type="submit" class="primario">Guardar</button>
+      </div>
+    </form>
+  </dialog>
+  <datalist id="responsables"></datalist>
+
+  <script src="src/logic.js"></script>
+  <script src="src/datos-ejemplo.js"></script>
+  <script src="src/app.js"></script>
+</body>
+</html>

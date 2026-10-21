@@ -1,0 +1,10 @@
+{
+  "name": "tracker-compromisos-riesgos",
+  "version": "1.0.0",
+  "description": "Tracker de compromisos y riesgos de proyecto con datos ficticios.",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/*.test.js"
+  }
+}
