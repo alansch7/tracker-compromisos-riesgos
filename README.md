@@ -42,9 +42,11 @@ npm test   # tests de la lógica (Node 18+), sin dependencias
 | **Sin frameworks ni backend** | Es una demo que debe abrirse con doble clic. `localStorage` alcanza para una persona. Para un equipo, el siguiente paso sería un backend compartido (por ejemplo, una hoja de cálculo o una API). |
 | **Fechas de ejemplo relativas a hoy** | Así la demo siempre muestra una mezcla realista de vencidos, por vencer y al día, sin importar cuándo se abra. |
 
-## Resultado
+## Resultado (con datos de ejemplo)
 
-Con los datos de ejemplo (15 ítems), el tablero muestra al abrirlo 3 vencidos, 2 por vencer, 2 riesgos altos y un 22% de cumplimiento, sin que haya que filtrar ni ordenar nada. La carga por responsable deja ver que dos personas concentran los vencidos.
+> Las cifras de esta sección salen de los **datos ficticios incluidos en el repo**, no de un proyecto real. Sirven para mostrar cómo se comporta la herramienta.
+
+Con los datos de ejemplo (15 ítems ficticios), el tablero muestra al abrirlo 3 vencidos, 2 por vencer, 2 riesgos altos y un 22% de cumplimiento, sin que haya que filtrar ni ordenar nada. La carga por responsable deja ver que dos personas concentran los vencidos.
 
 ![Alta de un nuevo riesgo](docs/nuevo-riesgo.jpg)
 
