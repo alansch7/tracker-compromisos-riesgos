@@ -2,7 +2,15 @@
 
 Tablero liviano para seguir los **compromisos** que salen de las reuniones de un proyecto y sus **riesgos**, con semáforo de plazos, matriz de probabilidad × impacto y carga por responsable.
 
+**[Ver demo en vivo](https://alansch7.github.io/tracker-compromisos-riesgos/)**
+
 > Todos los datos son **ficticios**: el "Proyecto Atlas" es la migración de la intranet de una empresa inventada (Empresa Demo S.A.). Ninguna persona, área ni fecha corresponde a un proyecto real.
+
+![Tablero del tracker](docs/tablero.jpg)
+
+## El problema
+
+En los proyectos con muchas reuniones de seguimiento, los compromisos quedan repartidos entre actas, correos y planillas. Nadie ve con claridad qué está vencido ni quién está sobrecargado, y los riesgos se registran una vez y no se vuelven a revisar. Este tracker los junta en un solo lugar y responde lo que importa en cada reunión: **qué hay que destrabar hoy y quién lo tiene**.
 
 ## Qué hace
 
@@ -33,6 +41,14 @@ npm test   # tests de la lógica (Node 18+), sin dependencias
 | **Lógica separada de la interfaz** | `src/logic.js` son funciones puras sin DOM: se testean en Node y se podrían reutilizar con otro frontend o backend. |
 | **Sin frameworks ni backend** | Es una demo que debe abrirse con doble clic. `localStorage` alcanza para una persona. Para un equipo, el siguiente paso sería un backend compartido (por ejemplo, una hoja de cálculo o una API). |
 | **Fechas de ejemplo relativas a hoy** | Así la demo siempre muestra una mezcla realista de vencidos, por vencer y al día, sin importar cuándo se abra. |
+
+## Resultado
+
+Con los datos de ejemplo (15 ítems), el tablero muestra al abrirlo 3 vencidos, 2 por vencer, 2 riesgos altos y un 22% de cumplimiento, sin que haya que filtrar ni ordenar nada. La carga por responsable deja ver que dos personas concentran los vencidos.
+
+![Alta de un nuevo riesgo](docs/nuevo-riesgo.jpg)
+
+Las reglas de negocio están cubiertas por 9 tests automatizados: semáforo, severidad, validación, orden, filtros, indicadores, matriz y exportación a CSV.
 
 ## Estructura
 
